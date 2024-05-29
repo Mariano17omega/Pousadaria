@@ -10,12 +10,12 @@ describe 'GET API/v1/pousada/:cnpj' do
     inn.inn_rooms.create!(name: 'Quarto Térreo', size: 30, guest_limit: 3)
 
     # Act
-    get "/api/v1/pousada/#{inn.registration_number}"
+    get "/api/v1/inns/#{inn.registration_number}"
 
     # Asset
     expect(response).to have_http_status(200)
     expect(response.content_type).to include 'application/json'
-    json_response = JSON.phase(response.body)
+    json_response = JSON.parse(response.body)
 
     expect(json_response['name']).to eq 'Pousada dos Devs'
     expect(json_response['document']).to eq '95006658088'

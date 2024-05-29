@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      get '/pousada', to: 'inns#details'
+      resources :inns, only: [:show]
     end
   end
 end
